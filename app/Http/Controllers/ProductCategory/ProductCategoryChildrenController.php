@@ -13,7 +13,7 @@ class ProductCategoryChildrenController extends ApiController
     
 
 
-    public function innmediate_children($id)
+    public function inmediate_children($id)
     {
        
         // el select grande sin el GROUP BY

@@ -24,7 +24,7 @@ Route::resource('product_categories', 'ProductCategory\ProductCategoryController
 Route::apiResource('/{category}/products', 'ProductCategory\ProductCategoryController', ['only' => ['index']]);
 
 
-Route::get('/category_children/{id}', 'ProductCategory\ProductCategoryChildrenController@innmediate_children');
+Route::get('/category_children/{id}', 'ProductCategory\ProductCategoryChildrenController@inmediate_children');
 
 
 Route::get('/category_last_children/{id}', 'ProductCategory\ProductCategoryChildrenController@last_children');
