@@ -16,53 +16,29 @@ class ProductCategoryChildrenController extends ApiController
     public function inmediate_children($id)
     {
        
-        // el select grande sin el GROUP BY
+  
 
-        $myselect ="SELECT  node.left as node_left, 
-                        node.name as node_name, 
-                        node.right as node_right, 
-                        parent.left as parent_left, 
-                        parent.name as parent_name, 
-                        parent.right as parent_right, 
-                        sub_parent.left as sub_parent_left, 
-                        sub_parent.name as sub_parent_name, 
-                        sub_parent.right as sub_parent_right,
-                        st_depth + 1
+        $myselect = "SELECT node_left, node_id as category_id, node_name as category_name FROM
+                (SELECT  node.left as node_left,
+                        node.id as node_id, 
+                        node.name as node_name
                     FROM product_categories AS node,product_categories AS parent, product_categories AS sub_parent,
                     (SELECT node.left as st_node_left, node.name as st_node_name, (COUNT(parent.name) - 1) AS st_depth
                         FROM product_categories AS node,
                              product_categories AS parent
-                        WHERE node.left BETWEEN parent.left AND parent.right AND node.id = 4
+                        WHERE node.left BETWEEN parent.left AND parent.right AND node.id = " . $id . "
                         GROUP BY st_node_left, st_node_name
                         ORDER BY st_node_left) AS sub_tree
                     WHERE node.left BETWEEN parent.left AND parent.right
                     AND node.left BETWEEN sub_parent.left AND sub_parent.right
                     AND sub_parent.name = st_node_name
-                    GROUP BY node_name";
+                    ) AS query ORDER BY node_left";
 
 
 
-         $myselect ="SELECT  node.left as node_left, 
-                        node.name as node_name,
-                        (COUNT(parent.name) - (sub_tree.st_depth + 1)) AS depth2
-                    FROM product_categories AS node,product_categories AS parent, product_categories AS sub_parent,
-                    (SELECT node.left as st_node_left, node.name as st_node_name, (COUNT(parent.name) - 1) AS st_depth
-                        FROM product_categories AS node,
-                             product_categories AS parent
-                        WHERE node.left BETWEEN parent.left AND parent.right AND node.id = 1
-                        GROUP BY st_node_left, st_node_name
-                        ORDER BY st_node_left) AS sub_tree
-                    WHERE node.left BETWEEN parent.left AND parent.right
-                    AND node.left BETWEEN sub_parent.left AND sub_parent.right
-                    AND sub_parent.name = st_node_name
-                    GROUP BY node_left, node_name, sub_tree.st_depth";
-
-
-            // el toque final del HAVNG Depth = 1 y el parametro externo
-
-
-         $myselect = "SELECT node_name as category_id FROM
-                (SELECT  node.left as node_left, 
+         $myselect = "SELECT node_left, node_id as category_id, node_name as category_name FROM
+                (SELECT  node.left as node_left,
+                        node.id as node_id, 
                         node.name as node_name,
                         (COUNT(parent.name) - (sub_tree.st_depth + 1)) AS depth
                     FROM product_categories AS node,product_categories AS parent, product_categories AS sub_parent,
@@ -75,12 +51,15 @@ class ProductCategoryChildrenController extends ApiController
                     WHERE node.left BETWEEN parent.left AND parent.right
                     AND node.left BETWEEN sub_parent.left AND sub_parent.right
                     AND sub_parent.name = st_node_name
-                    GROUP BY node_left, node_name, sub_tree.st_depth
+                    GROUP BY node_left, node_id, node_name, sub_tree.st_depth
                     ORDER BY node_left) AS query
-                WHERE depth = 1";
+                WHERE depth = 1 ORDER BY node_left";
+
+
 
 
         $product_categories = DB::select(DB::raw($myselect));
+        // dd($product_categories);
 
         return response()->json(['data' => $product_categories], 200);
         // return $this->showAll($product_categories);
