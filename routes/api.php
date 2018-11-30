@@ -15,7 +15,11 @@ use Illuminate\Http\Request;
 
 
 
+
 Route::resource('products', 'Product\ProductController', ['only' => ['index', 'show']]);
+
+
+Route::resource('featured_products', 'Product\FeaturedProductController', ['only' => ['index']]);
 
 
 Route::resource('product_categories', 'ProductCategory\ProductCategoryController', ['only' => ['index', 'show']]);
@@ -31,3 +35,15 @@ Route::get('/category_last_children/{id}', 'ProductCategory\ProductCategoryChild
 
 
 Route::get('/category_last_products_children/{id}', 'ProductCategory\ProductCategoryChildrenController@last_products_children');
+
+
+Route::resource('home_page_category_orders', 'ProductCategory\HomePageCategoryOrderController', ['only' => ['index']]);
+
+
+
+
+
+
+
+
+

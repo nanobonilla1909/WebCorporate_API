@@ -21,6 +21,8 @@ class CreateProductCategoriesTable extends Migration
             $table->integer('depth')->unsigned();
             $table->integer('left')->unsigned();
             $table->integer('right')->unsigned();
+            $table->string('image');
+            $table->string('icon');
 
 
             $table->string('deleted', 1)->default('0');

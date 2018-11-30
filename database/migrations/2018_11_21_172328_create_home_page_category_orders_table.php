@@ -20,12 +20,14 @@ class CreateHomePageCategoryOrdersTable extends Migration
             $table->unsignedInteger('product_category_id');
 
             $table->timestamps();
-        });
 
-         /* Foreign Keys */
+            /* Foreign Keys */
 
             $table->foreign('product_category_id')->references('id')->on('product_categories');
     
+        });
+
+
     }
 
     /**

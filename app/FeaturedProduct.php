@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Product;
 
-class FeaturedProducts extends Model
+class FeaturedProduct extends Model
 {
     protected $fillable = [
         'position',

@@ -20,11 +20,13 @@ class CreateFeaturedProductsTable extends Migration
             $table->unsignedInteger('product_id');
 
             $table->timestamps();
-        });
 
-         /* Foreign Keys */
+            /* Foreign Keys */
 
             $table->foreign('product_id')->references('id')->on('products');
+        });
+
+
     }
 
     /**

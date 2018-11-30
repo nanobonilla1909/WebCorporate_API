@@ -1,8 +1,8 @@
-name;description;price;imageUrl;product_category_id;product_type_id;deleted
-Whisky Johnnie Walker Black Label 12YO;;890.00;;2;1;0
-Vino DV Catena Malbec-Malbec x 750 cc;;320.00;;3;1;0
-Gin Bombay SAPPHIRE 12 x 500cc 47°;;625.00;;6;1;0
-Whisky White Horse 12X750 - UK;;400.00;;2;1;0
-Gin Bombay x 750 ml;;552.00;;6;1;0
-Amarula x 750 ml.;;375.00;;5;1;0
-Baileys x 500 ml.;;430.00;;5;1;0
+name;description;price;image;product_category_id;product_type_id;deleted
+Whisky Johnnie Walker Black Label 12YO;;890.00;;3;1;0
+Vino DV Catena Malbec-Malbec x 750 cc;;320.00;;4;1;0
+Gin Bombay SAPPHIRE 12 x 500cc 47°;;625.00;;7;1;0
+Whisky White Horse 12X750 - UK;;400.00;;3;1;0
+Gin Bombay x 750 ml;;552.00;;7;1;0
+Amarula x 750 ml.;;375.00;;6;1;0
+Baileys x 500 ml.;;430.00;;6;1;0

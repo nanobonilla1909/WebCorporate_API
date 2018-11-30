@@ -62,6 +62,24 @@ class DatabaseSeeder extends Seeder
 		DB::statement('ALTER TABLE characterized_products AUTO_INCREMENT = 1;');
         $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/characterized_products.csv',';');
 		DB::table('characterized_products')->insert($seedData);
+
+
+        /* Carga home_page_category_orders */
+
+        DB::table('home_page_category_orders')->delete();
+        DB::statement('ALTER TABLE home_page_category_orders AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/home_page_category_orders.csv',';');
+        DB::table('home_page_category_orders')->insert($seedData);
+
+
+        /* Carga featured_products */
+
+        DB::table('featured_products')->delete();
+        DB::statement('ALTER TABLE featured_products AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/featured_products.csv',';');
+        DB::table('featured_products')->insert($seedData);
+        
+
 		
 
 		

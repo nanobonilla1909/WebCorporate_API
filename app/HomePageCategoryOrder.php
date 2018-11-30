@@ -8,7 +8,7 @@ class HomePageCategoryOrder extends Model
 {
      protected $fillable = [
         'order',
-        'category_id'
+        'product_category_id'
     ];
 
 

@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->text('description');
-            $table->float('price');
-            $table->string('imageUrl');
+            $table->text('description')->nullable;
+            $table->float('price')->nullable;
+            $table->string('image')->nullable;
 
             $table->unsignedInteger('product_category_id');
             $table->unsignedInteger('product_type_id');
@@ -31,8 +31,8 @@ class CreateProductsTable extends Migration
 
 
             /* Foreign Keys */
-            
-            $table->foreign('product_category_id')->references('id')->on('product_categories'); 
+
+            $table->foreign('product_category_id')->references('id')->on('product_categories');
 
             $table->foreign('product_type_id')->references('id')->on('product_types');
 
