@@ -39,7 +39,7 @@ Route::get('/category_last_products_children/{id}', 'ProductCategory\ProductCate
 
 Route::resource('home_page_category_orders', 'ProductCategory\HomePageCategoryOrderController', ['only' => ['index']]);
 
-
+Route::resource('highlighted_items', 'Home\HighleghtedItemController', ['only' => ['index']]);
 
 
 

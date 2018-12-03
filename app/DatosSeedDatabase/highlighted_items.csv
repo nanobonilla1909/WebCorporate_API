@@ -1,0 +1,6 @@
+order;title;image;link_to
+1;Lo mejor en Cosmética;http://localhost:8000/app_images/imagenCat0.jpg;agregar link
+2;Equipaje;http://localhost:8000/app_images/imagenCat1.jpg;agregar link
+3;Descubrí Fragancias;http://localhost:8000/app_images/imagenCat2.jpg;agregar link
+4;Descubrí Indumentaria;http://localhost:8000/app_images/imagenCat3.jpg;agregar link
+4;Descubrí Bebidas;http://localhost:8000/app_images/imagenCat4.jpg;agregar link

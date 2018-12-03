@@ -80,6 +80,15 @@ class DatabaseSeeder extends Seeder
         DB::table('featured_products')->insert($seedData);
         
 
+        /* Carga highlighted_items */
+
+        DB::table('highlighted_items')->delete();
+        DB::statement('ALTER TABLE highlighted_items AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/highlighted_items.csv',';');
+        DB::table('highlighted_items')->insert($seedData);
+        
+
+        
 		
 
 		
