@@ -16,6 +16,8 @@ class HomePageCategoryOrder extends Model
 
     public function product_category() {
 
-        return $this->hasOne(ProductCategory::class);
+        return $this->belongsTo(ProductCategory::class);
     }
+
+
 }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'images',
+    'default' => 'app_images',
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
 
          'images' => [
             'driver' => 'local',
-            'root' => public_path('images'),
+            'root' => public_path('app_images'),
             'visibility' => 'public',
         ],
 

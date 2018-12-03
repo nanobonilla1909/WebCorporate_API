@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 Route::resource('products', 'Product\ProductController', ['only' => ['index', 'show']]);
 
 
-Route::resource('featured_products', 'Product\FeaturedProductController', ['only' => ['index']]);
+Route::resource('featured_products', 'Product\FeaturedProductController', ['only' => ['index', 'show']]);
 
 
 Route::resource('product_categories', 'ProductCategory\ProductCategoryController', ['only' => ['index', 'show']]);

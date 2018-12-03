@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\ProductCategory;
 use App\ProductType;
 use App\CharacterizedProduct;
+use App\FeaturedProduct;
 
 class Product extends Model
 {
@@ -35,6 +36,11 @@ class Product extends Model
     public function characterized_products() {
 
         return $this->hasMany(CharacterizedProduct::class);
+    }
+
+    public function featured_product() {
+
+        return $this->hasOne(FeaturedProduct::class);
     }
 
 
