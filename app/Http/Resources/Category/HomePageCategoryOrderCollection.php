@@ -18,7 +18,8 @@ class HomePageCategoryOrderCollection extends Resource
         return [
             'position' => $this->order,
             'product_category_id' => $this->product_category_id,
-            'category_name' => $this->product_category->name
+            'category_name' => $this->product_category->name,
+            'category_icon' => $this->product_category->icon
         ];
 
            
