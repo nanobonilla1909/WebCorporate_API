@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductCharacteristicOption;
 
 
+
 class CharacterizedProduct extends Model
 {
 

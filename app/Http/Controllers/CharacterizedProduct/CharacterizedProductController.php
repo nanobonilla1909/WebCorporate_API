@@ -2,82 +2,55 @@
 
 namespace App\Http\Controllers\CharacterizedProduct;
 
+use App\CharacterizedProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
+use Illuminate\Support\Facades\DB;
+
+
 class CharacterizedProductController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index($products)
     {
-        //
+        $characterized_products = DB::table('characterized_products')
+                    ->join('product_characteristic_options','characterized_products.product_characteristic_option_id','=','product_characteristic_options.id')
+                    ->join('product_type_characteristics','product_characteristic_options.product_type_characteristic_id','=','product_type_characteristics.id')
+                    ->whereIn('characterized_products.id', $products)
+                    ->select('characterized_products.id',
+                            'characterized_products.product_id',
+                            'characterized_products.product_characteristic_option_id',
+                            'product_characteristic_options.value',
+                            'product_characteristic_options.product_type_characteristic_id',
+                            'product_type_characteristics.name')
+                    ->get();
+
+        // return $this->showAll($characterized_products);
+        return response()->json(['data' => $characterized_products], 200);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
+    
     public function destroy($id)
     {
         //

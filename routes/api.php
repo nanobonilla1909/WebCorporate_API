@@ -2,17 +2,6 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 
 
 
@@ -42,6 +31,13 @@ Route::resource('home_page_category_orders', 'ProductCategory\HomePageCategoryOr
 Route::resource('highlighted_items', 'Homepage\HighlightedItemController', ['only' => ['index']]);
 
 
+Route::get('/characterized_products/{products}', 'CharacterizedProduct\CharacterizedProductController@index');
+
+
+Route::get('/category_last_products_children_characterized/{id}', 'ProductCategory\ProductCategoryChildrenController@last_products_children_characterized');
+
+
+Route::get('/temporary_cart/{user}', 'TemporaryCart\TemporaryCartController@index', ['only' => ['index']]);
 
 
 

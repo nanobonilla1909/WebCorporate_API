@@ -86,6 +86,19 @@ class DatabaseSeeder extends Seeder
         DB::statement('ALTER TABLE highlighted_items AUTO_INCREMENT = 1;');
         $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/highlighted_items.csv',';');
         DB::table('highlighted_items')->insert($seedData);
+
+
+        /* Carga Carro de Compras Temporario */
+
+        DB::table('temporary_carts')->delete();
+        DB::statement('ALTER TABLE temporary_carts AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/temporary_carts.csv',';');
+        DB::table('temporary_carts')->insert($seedData);
+
+        DB::table('temporary_cart_items')->delete();
+        DB::statement('ALTER TABLE temporary_cart_items AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/temporary_cart_items.csv',';');
+        DB::table('temporary_cart_items')->insert($seedData);
         
 
         

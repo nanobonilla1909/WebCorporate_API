@@ -109,5 +109,37 @@ class ProductCategoryChildrenController extends ApiController
 
     }
 
+
+    /*
+        Dada una Categoria trae todos los Productos pertenecientes a algun nodo terminal del arbol de dicha categoria, pero con sus atributos.
+    */
+
+    public function last_products_children_characterized($id) {
+
+
+        $myselect = "SELECT characterized_products.product_id,  
+                            product_type_characteristics.id as type_id, 
+                            product_type_characteristics.name,
+                            product_characteristic_options.id as options_id,
+                            product_characteristic_options.value                           
+                    FROM products 
+                    JOIN characterized_products on products.id = characterized_products.product_id
+                    JOIN product_characteristic_options on characterized_products.product_characteristic_option_id = product_characteristic_options.id
+                    JOIN product_type_characteristics on product_characteristic_options.product_type_characteristic_id=product_type_characteristics.id
+                    WHERE product_category_id in 
+                    (SELECT query1.categoria_hoja FROM 
+                        (SELECT node.left, node.id AS categoria_hoja
+                            FROM product_categories AS node,product_categories AS parent
+                            WHERE node.left BETWEEN parent.left AND parent.right AND node.right = node.left + 1 AND parent.id = " . $id . "
+                            ORDER BY node.left) AS query1) ORDER BY products.id" ;
+
+
+
+        $product_categories = DB::select(DB::raw($myselect));
+
+        return response()->json(['data' => $product_categories], 200);
+
+    }
+
    
 }
