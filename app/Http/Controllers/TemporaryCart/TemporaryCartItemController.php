@@ -1,57 +1,107 @@
 <?php
 
-
 namespace App\Http\Controllers\TemporaryCart;
 
 use App\TemporaryCartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Controller;
 
-
-class TemporaryCartItemController extends ApiController
+class TemporaryCartItemController extends Controller
 {
-
-    public function index($user)
+    //
+    public function index($id)
     {
-        $cart_items = DB::table('temporary_cart_items')
-                    ->join('products','temporary_cart_items.product_id','=','products.id')
-                    ->where('temporary_cart_items.user_id', $user)
-                    ->select('temporary_cart_items.id',
-                            'temporary_cart_items.product_id',
-                            'temporary_cart_items.quantity',
-                            'temporary_cart_items.price',
-                            'temporary_cart_items.discount_amount',
-                            'temporary_cart_items.discount_percentage',
-                            'products.name',
-                            'products.image')
-                    ->get();
-
-        // return $this->showAll($characterized_products);
-        return response()->json(['data' => $cart_items], 200);
-
+       
     }
 
 
-    public function create()
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     $campos = $request->all();
+
+    //     $cart_item = TemporaryCartItem::create($campos);
+
+    //     return response()->json(['data' => $cart_item], 201);
+    // }
 
 
     public function store(Request $request)
     {
-        //
+
+
+        $campos = $request->all();
+        $temporary_cart_id = $request->input('temporary_cart_id');
+        $product_id = $request->input('product_id');
+        $input_quantity = $request->input('quantity');
+       
+
+
+
+        $cart_item = TemporaryCartItem::where('product_id', $product_id)
+            ->where('temporary_cart_id', $temporary_cart_id)
+            ->first();
+
+        if (empty($cart_item)) {
+
+            $new_cart_item = TemporaryCartItem::create($campos);
+
+            return response()->json(['data' => $new_cart_item], 201);
+
+        } else {
+
+            $old_quantity = $cart_item->quantity;
+            if ($input_quantity == 1) {
+                $new_quantity = $old_quantity + 1;
+                // $new_quantity = 110;
+            } else {
+                $new_quantity = $old_quantity - 1;
+                // $new_quantity = 111;
+            }
+
+            $cart_item->quantity = $new_quantity;
+
+            $cart_item->save();
+
+            return response()->json(['data' => $cart_item, $old_quantity, $new_quantity], 200);
+
+        }
+        
+
+            // return response()->json(['nombre' => $name, 'mensaje' => "Es para ver si funciona: "], 200);
+
     }
 
-    public function update(Request $request, TemporaryCartItem $temporaryCartItem)
+
+    public function update(Request $request, $id)
     {
-        //
+        $cart_item = TemporaryCartItem::findorFail($id);
+
+        if ($request->has('quantity')) {
+            $cart_item->quantity = $request->quantity;
+        }
+
+        if (!$cart_item->isDirty()) {
+            return response()->json(['error' => 'Se debe especificar al menos un valor para actualizar', 'code' => 422], 422);
+        }
+
+        $cart_item->save();
+
+        return response()->json(['data' => $cart_item], 200);
+
     }
 
 
-    public function destroy(TemporaryCartItem $temporaryCartItem)
+    public function destroy($id)
     {
-        //
+
+        $cart_item = TemporaryCartItem::findorFail($id);
+
+        $cart_item->delete();
+
+        return response()->json(['data' => $cart_item], 200);
+
     }
+
+
 }

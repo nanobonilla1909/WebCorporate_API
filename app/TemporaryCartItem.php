@@ -12,7 +12,10 @@ class TemporaryCartItem extends Model
     protected $fillable = [
         'product_id',
         'quantity',
-        'temporary_cart_id'
+        'temporary_cart_id',
+        'price',
+        'discount_amount',
+        'discount_percentage'
     ];
 
  

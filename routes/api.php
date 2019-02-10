@@ -37,7 +37,17 @@ Route::get('/characterized_products/{products}', 'CharacterizedProduct\Character
 Route::get('/category_last_products_children_characterized/{id}', 'ProductCategory\ProductCategoryChildrenController@last_products_children_characterized');
 
 
-Route::get('/temporary_cart/{user}', 'TemporaryCart\TemporaryCartController@index', ['only' => ['index']]);
+
+Route::get('/temporary_cart_items_quantity/{cart_id}', 'TemporaryCart\TemporaryCartController@items_quantity');
+
+
+Route::get('/temporary_carts/{cart_id}', 'TemporaryCart\TemporaryCartController@show');
+
+
+Route::resource('temporary_cart_items', 'TemporaryCart\TemporaryCartItemController', ['only' => ['index', 'store', 'update', 'destroy']]);
+
+
+Route::delete('/temporary_cart_items_empty/{cart_id}', 'TemporaryCart\TemporaryCartController@empty');
 
 
 

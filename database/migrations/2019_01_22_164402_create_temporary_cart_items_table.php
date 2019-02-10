@@ -20,8 +20,8 @@ class CreateTemporaryCartItemsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('quantity');
             $table->float('price');
-            $table->float('discount_amount');
-            $table->float('discount_percentage');
+            $table->float('discount_amount')->nullable;
+            $table->float('discount_percentage')->nullable;
 
             $table->timestamps();
 
