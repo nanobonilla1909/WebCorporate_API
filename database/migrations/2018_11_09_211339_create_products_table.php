@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable;
             $table->float('price')->nullable;
             $table->string('image')->nullable;
+            $table->boolean('is_active');
 
             $table->unsignedInteger('product_category_id');
             $table->unsignedInteger('product_type_id');

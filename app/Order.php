@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\OrderType;
 use App\OrderItem;
 use App\User;
@@ -15,17 +16,22 @@ use App\Delivery;
 
 class Order extends Model
 {
+
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
+    
     protected $fillable = [
        
         'order_number',
-		'order_type',
+		'order_type_id',
 		'customer_id',
 		'payment_method_id',
 		'quotes',
 		'bank_id',
 		'token',
 		'total',
-		'status_id',
+		'order_status_id',
 		'delivery_id',
 		'code_auth',
 		'site_transaction_id',
@@ -42,7 +48,6 @@ class Order extends Model
 		'fisco_cn',
 		'fisco_ca',
 		'fisco_fc'
-
 
     ];
 

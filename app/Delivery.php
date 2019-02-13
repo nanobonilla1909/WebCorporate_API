@@ -11,21 +11,10 @@ class Delivery extends Model
 {
     protected $fillable = [
 		'delivery_type_id',
-		'pick_up_location_type_id',
-		'pick_up_location_id',
-		'pick_up_availability',
+		'delivery_location_id',
 		'delivery_availability',
-		'delivery_address',
 		'delivery_comments'
 		 ];
 
-  	public function pick_up_location_type() {
-
-        return $this->belongsTo(PickupLocationType::class);
-    }
-
-    public function pick_up_location() {
-
-        return $this->belongsTo(PickupLocation::class);
-    }
+  	
 }

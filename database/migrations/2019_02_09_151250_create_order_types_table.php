@@ -13,17 +13,18 @@ class CreateOrderTypesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('order_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+
+            $table->integer('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('order_types');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePickUpLocationsTable extends Migration
+class CreateOrderStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreatePickUpLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pick_up_locations', function (Blueprint $table) {
+        Schema::create('order_statuses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+
+            $table->integer('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
-        Schema::dropIfExists('pick_up_locations');
+        Schema::dropIfExists('order_statuses');
     }
 }
