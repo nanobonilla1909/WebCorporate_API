@@ -15,15 +15,24 @@ class CreateCompanyDeliveriesTable extends Migration
     {
         Schema::create('company_deliveries', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->unsignedInteger('company_id');
+            $table->unsignedInteger('delivery_id');
+            
+            $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            /* Foreign Keys */
+        
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('delivery_id')->references('id')->on('deliveries');
+
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
+
     public function down()
     {
         Schema::dropIfExists('company_deliveries');

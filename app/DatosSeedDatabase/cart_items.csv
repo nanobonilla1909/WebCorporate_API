@@ -1,0 +1,2 @@
+cart_id;product_id;quantity;price;discount_amount;discount_percentage
+1;1;2;890;89;0

@@ -16,9 +16,13 @@ class CreatePaymentMethodsTable extends Migration
          Schema::create('payment_methods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('code');
+            $table->unsignedInteger('code')->nullable();
+            $table->string('icon')->nullable();
+            $table->unsignedInteger('order')->nullable();
+            $table->unsignedInteger('status')->nullable();
 
-            $table->integer('created_by')->nullable();
+
+            $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

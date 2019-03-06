@@ -15,15 +15,24 @@ class CreateDeliveriesTable extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->unsignedInteger('delivery_type_id');
+            $table->unsignedInteger('delivery_location_id');
+            $table->string('delivery_availability');
+            $table->string('comments');
+
+            $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            /* Foreign Keys */
+        
+            $table->foreign('delivery_type_id')->references('id')->on('delivery_types');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
+
     public function down()
     {
         Schema::dropIfExists('deliveries');

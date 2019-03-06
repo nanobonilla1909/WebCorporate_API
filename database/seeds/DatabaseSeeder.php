@@ -90,19 +90,65 @@ class DatabaseSeeder extends Seeder
 
         /* Carga Carro de Compras Temporario */
 
-        DB::table('temporary_carts')->delete();
-        DB::statement('ALTER TABLE temporary_carts AUTO_INCREMENT = 1;');
-        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/temporary_carts.csv',';');
-        DB::table('temporary_carts')->insert($seedData);
+        DB::table('carts')->delete();
+        DB::statement('ALTER TABLE carts AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/carts.csv',';');
+        DB::table('carts')->insert($seedData);
 
-        DB::table('temporary_cart_items')->delete();
-        DB::statement('ALTER TABLE temporary_cart_items AUTO_INCREMENT = 1;');
-        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/temporary_cart_items.csv',';');
-        DB::table('temporary_cart_items')->insert($seedData);
+        DB::table('cart_items')->delete();
+        DB::statement('ALTER TABLE cart_items AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/cart_items.csv',';');
+        DB::table('cart_items')->insert($seedData);
         
+        DB::table('companies')->delete();
+        DB::statement('ALTER TABLE companies AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/companies.csv',';');
+        DB::table('companies')->insert($seedData);
+        
+        DB::table('users')->delete();
+        DB::statement('ALTER TABLE users AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/users.csv',';');
+        DB::table('users')->insert($seedData);
 
-        
+
 		
+        DB::table('delivery_types')->delete();
+        DB::statement('ALTER TABLE delivery_types AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/delivery_types.csv',';');
+        DB::table('delivery_types')->insert($seedData);
+
+        DB::table('company_deliveries')->delete();
+        DB::statement('ALTER TABLE company_deliveries AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/company_deliveries.csv',';');
+        DB::table('company_deliveries')->insert($seedData);
+
+        DB::table('delivery_locations')->delete();
+        DB::statement('ALTER TABLE delivery_locations AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/delivery_locations.csv',';');
+        DB::table('delivery_locations')->insert($seedData);
+
+        DB::table('deliveries')->delete();
+        DB::statement('ALTER TABLE deliveries AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/deliveries.csv',';');
+        DB::table('deliveries')->insert($seedData);
+
+
+
+        DB::table('banks')->delete();
+        DB::statement('ALTER TABLE banks AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/banks.csv',';');
+        DB::table('banks')->insert($seedData);
+
+        DB::table('payment_methods')->delete();
+        DB::statement('ALTER TABLE payment_methods AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/payment_methods.csv',';');
+        DB::table('payment_methods')->insert($seedData);
+
+        DB::table('bank_benefits')->delete();
+        DB::statement('ALTER TABLE bank_benefits AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/bank_benefits.csv',';');
+        DB::table('bank_benefits')->insert($seedData);
+
 
 		
 		DB::statement('SET FOREIGN_KEY_CHECKS=0');

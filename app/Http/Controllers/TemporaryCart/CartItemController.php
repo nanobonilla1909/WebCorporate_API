@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\TemporaryCart;
 
-use App\TemporaryCartItem;
+use App\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class TemporaryCartItemController extends Controller
+class CartItemController extends Controller
 {
     //
     public function index($id)
@@ -20,7 +20,7 @@ class TemporaryCartItemController extends Controller
     // {
     //     $campos = $request->all();
 
-    //     $cart_item = TemporaryCartItem::create($campos);
+    //     $cart_item = CartItem::create($campos);
 
     //     return response()->json(['data' => $cart_item], 201);
     // }
@@ -31,20 +31,20 @@ class TemporaryCartItemController extends Controller
 
 
         $campos = $request->all();
-        $temporary_cart_id = $request->input('temporary_cart_id');
+        $cart_id = $request->input('cart_id');
         $product_id = $request->input('product_id');
         $input_quantity = $request->input('quantity');
        
 
 
 
-        $cart_item = TemporaryCartItem::where('product_id', $product_id)
-            ->where('temporary_cart_id', $temporary_cart_id)
+        $cart_item = CartItem::where('product_id', $product_id)
+            ->where('cart_id', $cart_id)
             ->first();
 
         if (empty($cart_item)) {
 
-            $new_cart_item = TemporaryCartItem::create($campos);
+            $new_cart_item = CartItem::create($campos);
 
             return response()->json(['data' => $new_cart_item], 201);
 
@@ -75,7 +75,7 @@ class TemporaryCartItemController extends Controller
 
     public function update(Request $request, $id)
     {
-        $cart_item = TemporaryCartItem::findorFail($id);
+        $cart_item = CartItem::findorFail($id);
 
         if ($request->has('quantity')) {
             $cart_item->quantity = $request->quantity;
@@ -95,7 +95,7 @@ class TemporaryCartItemController extends Controller
     public function destroy($id)
     {
 
-        $cart_item = TemporaryCartItem::findorFail($id);
+        $cart_item = CartItem::findorFail($id);
 
         $cart_item->delete();
 

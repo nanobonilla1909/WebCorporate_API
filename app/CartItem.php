@@ -3,16 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\TemporaryCart;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Cart;
 use App\Product;
 
 
-class TemporaryCartItem extends Model
+class CartItem extends Model
 {
+
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'product_id',
         'quantity',
-        'temporary_cart_id',
+        'cart_id',
         'price',
         'discount_amount',
         'discount_percentage'
@@ -25,9 +31,9 @@ class TemporaryCartItem extends Model
         return $this->hasOne(Product::class);
     }
 
-    public function temporary_cart() {
+    public function cart() {
 
-        return $this->belongsTo(TemporaryCart::class);
+        return $this->belongsTo(Cart::class);
     }
 
 }

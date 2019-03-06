@@ -1,0 +1,6 @@
+payment_method_id;bank_id;quotes;interest
+1;1;12;0
+1;2;6;0
+1;2;9;0
+1;2;12;10
+2;3;6;15

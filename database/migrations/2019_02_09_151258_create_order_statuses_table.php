@@ -17,7 +17,7 @@ class CreateOrderStatusesTable extends Migration
             $table->increments('id');
             $table->string('name');
 
-            $table->integer('created_by')->nullable();
+            $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

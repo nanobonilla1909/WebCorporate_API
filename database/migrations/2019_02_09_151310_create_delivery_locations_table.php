@@ -4,23 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBanksTable extends Migration
+class CreateDeliveryLocationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
-         Schema::create('banks', function (Blueprint $table) {
+         Schema::create('delivery_locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('commerce_number')->nullable();
-            $table->string('color')->nullable();
-            $table->string('background')->nullable();
-            $table->string('logo')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->string('address');
 
 
             $table->unsignedInteger('created_by')->nullable();
@@ -36,6 +28,6 @@ class CreateBanksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banks');
+        Schema::dropIfExists('delivery_locations');
     }
 }

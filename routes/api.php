@@ -37,19 +37,43 @@ Route::get('/characterized_products/{products}', 'CharacterizedProduct\Character
 Route::get('/category_last_products_children_characterized/{id}', 'ProductCategory\ProductCategoryChildrenController@last_products_children_characterized');
 
 
+// Todo lo referente al Cart y CarItems
+// ------------------------------------
 
-Route::get('/temporary_cart_items_quantity/{cart_id}', 'TemporaryCart\TemporaryCartController@items_quantity');
+Route::get('/cart_items_quantity/{cart_id}', 'TemporaryCart\CartController@items_quantity');
 
-
-Route::get('/temporary_carts/{cart_id}', 'TemporaryCart\TemporaryCartController@show');
-
-
-Route::resource('temporary_cart_items', 'TemporaryCart\TemporaryCartItemController', ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::get('/carts/{cart_id}', 'TemporaryCart\CartController@show');
 
 
-Route::delete('/temporary_cart_items_empty/{cart_id}', 'TemporaryCart\TemporaryCartController@empty');
+Route::resource('cart_items', 'TemporaryCart\CartItemController', ['only' => ['index', 'store', 'update', 'destroy']]);
+
+
+Route::delete('/cart_items_empty/{cart_id}', 'TemporaryCart\CartController@empty');
 
 
 
+// Todo lo referente al User
+// -------------------------
 
+Route::resource('users.deliveries', 'User\UserDeliveryController', ['only' => ['index']]);
+
+
+
+// Companies
+// ---------
+
+Route::resource('companies', 'CompanyController', ['only' => ['index']]);
+
+
+
+// Todo lo referente al Pago
+// -------------------------
+
+Route::resource('users.deliveries', 'User\UserDeliveryController', ['only' => ['index']]);
+
+Route::resource('bank_benefits', 'BankBenefitController', ['only' => ['index','show']]);
+
+Route::resource('payment_methods', 'PaymentMethodController', ['only' => ['index','show']]);
+
+Route::get('/payment_options', 'PaymentOptionController@index');
 

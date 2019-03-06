@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemporaryCartItemsTable extends Migration
+class CreateCartItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,24 @@ class CreateTemporaryCartItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('temporary_cart_items', function (Blueprint $table) {
+        Schema::create('cart_items', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('temporary_cart_id');
+            $table->unsignedInteger('cart_id');
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('quantity');
             $table->float('price');
             $table->float('discount_amount')->nullable;
             $table->float('discount_percentage')->nullable;
 
+            $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             /* Foreign Keys */
         
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('temporary_cart_id')->references('id')->on('temporary_carts');
+            $table->foreign('cart_id')->references('id')->on('carts');
            
         });
     }
@@ -40,6 +42,6 @@ class CreateTemporaryCartItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temporary_cart_items');
+        Schema::dropIfExists('cart_items');
     }
 }
