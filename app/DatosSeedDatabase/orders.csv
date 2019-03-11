@@ -1,0 +1,2 @@
+order_number;order_type_id;customer_id;payment_method_id;quotes;bank_id;token;total;order_status_id;delivery_id;code_auth;site_transaction_id;card;card_number;ticket;number_operation;comments;is_for_gift;bill_status;bill;bill_number
+50583;1;1;1;6;1;3453jh3h312h91j1;20000;1;1;ASDJKASD;0;;731620;;0;;0;;;0

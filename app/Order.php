@@ -43,11 +43,7 @@ class Order extends Model
 		'is_for_gift',
 		'bill_status',
 		'bill',
-		'bill_number',
-		'fisco_pv',
-		'fisco_cn',
-		'fisco_ca',
-		'fisco_fc'
+		'bill_number'
 
     ];
 
@@ -82,7 +78,7 @@ class Order extends Model
         return $this->hasOne(Delivery::class);
     }
 
-    public function order_tems() {
+    public function order_items() {
 
         return $this->hasMany(OrderItem::class);
     }

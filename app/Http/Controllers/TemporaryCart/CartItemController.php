@@ -53,10 +53,10 @@ class CartItemController extends Controller
             $old_quantity = $cart_item->quantity;
             if ($input_quantity == 1) {
                 $new_quantity = $old_quantity + 1;
-                // $new_quantity = 110;
+                
             } else {
                 $new_quantity = $old_quantity - 1;
-                // $new_quantity = 111;
+                
             }
 
             $cart_item->quantity = $new_quantity;

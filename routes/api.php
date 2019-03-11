@@ -77,3 +77,13 @@ Route::resource('payment_methods', 'PaymentMethodController', ['only' => ['index
 
 Route::get('/payment_options', 'PaymentOptionController@index');
 
+
+
+// Todo lo referente a las Ordenes
+// --------------------------------
+
+
+Route::apiResource('orders', 'OrderController');
+
+
+

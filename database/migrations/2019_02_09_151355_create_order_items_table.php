@@ -23,8 +23,8 @@ class CreateOrderItemsTable extends Migration
             $table->float('price_list');
             $table->float('price');
             $table->float('subtotal');
-            $table->string('discount_label');
-            $table->float('discount_subtotal');
+            $table->string('discount_label')->nullable();
+            $table->float('discount_subtotal')->nullable();
             
             $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();

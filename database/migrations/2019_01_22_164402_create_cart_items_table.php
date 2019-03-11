@@ -20,8 +20,8 @@ class CreateCartItemsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('quantity');
             $table->float('price');
-            $table->float('discount_amount')->nullable;
-            $table->float('discount_percentage')->nullable;
+            $table->float('discount_amount')->nullable();
+            $table->float('discount_percentage')->nullable();
 
             $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();

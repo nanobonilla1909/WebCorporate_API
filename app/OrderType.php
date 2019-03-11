@@ -15,7 +15,7 @@ class OrderType extends Model
 	protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name',
+        'name'
     ];
 
 

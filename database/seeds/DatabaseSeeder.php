@@ -150,6 +150,27 @@ class DatabaseSeeder extends Seeder
         DB::table('bank_benefits')->insert($seedData);
 
 
+        DB::table('order_types')->delete();
+        DB::statement('ALTER TABLE order_types AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/order_types.csv',';');
+        DB::table('order_types')->insert($seedData);
+
+        DB::table('order_statuses')->delete();
+        DB::statement('ALTER TABLE order_statuses AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/order_statuses.csv',';');
+        DB::table('order_statuses')->insert($seedData);
+
+        DB::table('orders')->delete();
+        DB::statement('ALTER TABLE orders AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/orders.csv',';');
+        DB::table('orders')->insert($seedData);
+
+        DB::table('order_items')->delete();
+        DB::statement('ALTER TABLE order_items AUTO_INCREMENT = 1;');
+        $seedData = $this->seedFromCSV(app_path().'/DatosSeedDatabase/order_items.csv',';');
+        DB::table('order_items')->insert($seedData);
+
+
 		
 		DB::statement('SET FOREIGN_KEY_CHECKS=0');
 

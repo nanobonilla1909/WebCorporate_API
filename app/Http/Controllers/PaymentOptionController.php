@@ -41,17 +41,17 @@ class PaymentOptionController extends Controller
                 if (sizeof($bank_benefits) > 0) {
 
                   
-                    info('sizeof($bank_benefits)');
-                    info(sizeof($bank_benefits));
+                    // info('sizeof($bank_benefits)');
+                    // info(sizeof($bank_benefits));
 
-                    for ($i = 0; $i < sizeof($bank_benefits); $i++) {
-                       info($bank_benefits[$i]->bank_id); 
-                       info($bank_benefits[$i]->payment_method_id); 
-                       info($bank_benefits[$i]->quotes); 
-                       info($bank_benefits[$i]->interest); 
-                         info('---------------------: ');
+                    // for ($i = 0; $i < sizeof($bank_benefits); $i++) {
+                    //    info($bank_benefits[$i]->bank_id); 
+                    //    info($bank_benefits[$i]->payment_method_id); 
+                    //    info($bank_benefits[$i]->quotes); 
+                    //    info($bank_benefits[$i]->interest); 
+                    //      info('---------------------: ');
 
-                    }
+                    // }
                     
                     $banks_array = array();
                     $bank_benefits_array = array();
@@ -59,25 +59,24 @@ class PaymentOptionController extends Controller
                     $bank_ant = $bank_benefits[0]->bank_id;
                     $bank_ant_name = $bank_benefits[0]->bank_name;
 
-                    $bank_benefits_array[] = new CBankBenefit($bank_benefits[0]->id, $bank_benefits[0]->quotes, $bank_benefits[0]->interest);
+                    $bank_benefits_array[] = new CBankBenefit($bank_benefits[0]->id, $bank_benefits[0]->bank_id, $bank_benefits[0]->payment_method_id, $bank_benefits[0]->quotes, $bank_benefits[0]->interest);
 
                     if (sizeof($bank_benefits) > 1) {
 
                         for ($bb = 1; $bb < sizeof($bank_benefits); $bb++) {
 
-                         info('-------- entra en el loop -------------: ');
-                         info($bb);     
-                         // info($bank_benefits[0]->bank_name);
+                         // info('-------- entra en el loop -------------: ');
+                         // info($bb);     
+                         
 
                             if ($bank_benefits[$bb]->bank_id == $bank_ant) {
 
-                                info('pasa A');
                                 $flag = 1;
                                 
-                                $bank_benefits_array[] = new CBankBenefit($bank_benefits[$bb]->id, $bank_benefits[$bb]->quotes, $bank_benefits[$bb]->interest);
+                                $bank_benefits_array[] = new CBankBenefit($bank_benefits[$bb]->id, $bank_benefits[$bb]->bank_id, $bank_benefits[$bb]->payment_method_id, $bank_benefits[$bb]->quotes, $bank_benefits[$bb]->interest);
 
                             } else {
-                                info('pasa B');
+                                
                                 $flag = 2;
 
                                 $banks_array[] = new CBank($bank_ant, $bank_ant_name, $bank_benefits_array);
@@ -85,7 +84,7 @@ class PaymentOptionController extends Controller
                                 $bank_ant = $bank_benefits[$bb]->bank_id;
                                 $bank_ant_name = $bank_benefits[$bb]->bank_name;
                                 $bank_benefits_array = array();
-                                $bank_benefits_array[] = new CBankBenefit($bank_benefits[$bb]->id, $bank_benefits[$bb]->quotes, $bank_benefits[$bb]->interest);
+                                $bank_benefits_array[] = new CBankBenefit($bank_benefits[$bb]->id, $bank_benefits[$bb]->bank_id, $bank_benefits[$bb]->payment_method_id, $bank_benefits[$bb]->quotes, $bank_benefits[$bb]->interest);
                             }
 
                         }
@@ -93,21 +92,21 @@ class PaymentOptionController extends Controller
                         if ($flag == 1) {
 
                             $banks_array[] = new CBank($bank_ant, $bank_ant_name, $bank_benefits_array); 
-                            info("------PASA POR EL FLAAAAAAGGGGGG------");
+                            // info("------PASA POR EL FLAAAAAAGGGGGG------");
 
-                            info('bank_ant');
-                            info($bank_ant);
-                            info('----------');
+                            // info('bank_ant');
+                            // info($bank_ant);
+                            // info('----------');
 
-                            info('bank_ant_name');
-                            info($bank_ant_name);
-                            info('----------');
+                            // info('bank_ant_name');
+                            // info($bank_ant_name);
+                            // info('----------');
 
-                            info('bank_benefits_array');
-                            info($bank_benefits_array);
-                            info('----------');
+                            // info('bank_benefits_array');
+                            // info($bank_benefits_array);
+                            // info('----------');
 
-                            info("------TEMRINA EL FLAAAAAAGGGGGG------");                           
+                            // info("------TEMRINA EL FLAAAAAAGGGGGG------");                           
                            
                         }
 
@@ -181,9 +180,11 @@ class CBankBenefit {
     public $quotes;
     public $interest;
 
-    public function __construct($bank_benefit_id, $quotes, $interest) {
+    public function __construct($bank_benefit_id, $bank_id, $payment_method_id, $quotes, $interest) {
 
         $this->bank_benefit_id = $bank_benefit_id;
+        $this->bank_id = $bank_id;
+        $this->payment_method_id = $payment_method_id;
         $this->quotes = $quotes;
         $this->interest = $interest;
 
