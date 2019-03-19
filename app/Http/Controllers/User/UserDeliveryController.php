@@ -27,6 +27,7 @@ class UserDeliveryController extends Controller
                     ->select('users.id', 'users.name as user_name',
                             'users.email',
                             'users.company_id', 'companies.name',
+                            'company_deliveries.delivery_id',
                             'delivery_types.name as delivery_type',
                             'delivery_locations.name as delivery_location',
                             'delivery_locations.address',

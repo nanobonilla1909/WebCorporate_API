@@ -60,9 +60,9 @@ class OrderController extends Controller
 
         // - Para Varios items
         
-        $new_items = $request->items;
+        $new_items = $request->order_items;
         info($new_items);
-        
+
         foreach ($new_items as $new_item) {
             $obj= new OrderItem();
 

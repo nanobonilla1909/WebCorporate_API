@@ -25,6 +25,7 @@ class CreateOrderItemsTable extends Migration
             $table->float('subtotal');
             $table->string('discount_label')->nullable();
             $table->float('discount_subtotal')->nullable();
+            $table->boolean('is_a_gift')->nullable();
             
             $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();

@@ -12,8 +12,8 @@ id;name;code;depth;left;right;image;icon;deleted
 11;Indumentaria;IND;1;101;200;image.jpg;http://localhost:8000/app_images/icons/bebidas.svg;0
 12;Cosmetica;COS;1;201;300;image.jpg;http://localhost:8000/app_images/icons/cosmetica.svg;0
 13;Comestibles;COM;1;301;400;image.jpg;http://localhost:8000/app_images/icons/comestibles.svg;0
-14;Relojes;REL;1;401;500;image.jpg;http://localhost:8000/app_images/icons/relojes.svg;0
-15;Juguetria;JUG;1;501;600;image.jpg;http://localhost:8000/app_images/icons/equipajes.svg;0
+14;Relojería;REL;1;401;500;image.jpg;http://localhost:8000/app_images/icons/relojes.svg;0
+15;Perfumería;PER;1;501;600;image.jpg;http://localhost:8000/app_images/icons/equipajes.svg;0
 16;Electronica;ELE;1;601;700;image.jpg;http://localhost:8000/app_images/icons/equipajes.svg;0
 17;Lentes;LEN;1;701;800;image.jpg;http://localhost:8000/app_images/icons/lentes.svg;0
 18;Deportes;DEP;1;801;900;image.jpg;icon.jpg;0
