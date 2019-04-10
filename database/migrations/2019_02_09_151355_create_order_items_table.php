@@ -19,6 +19,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
             $table->string('description');
+            $table->string('image');
             $table->integer('quantity');
             $table->float('price_list');
             $table->float('price');
@@ -26,6 +27,7 @@ class CreateOrderItemsTable extends Migration
             $table->string('discount_label')->nullable();
             $table->float('discount_subtotal')->nullable();
             $table->boolean('is_a_gift')->nullable();
+
             
             $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();

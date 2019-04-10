@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderItem;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ApiController;
 
-class OrderController extends Controller
+class OrderController extends ApiController
 {
 
     public function index()
     {
-        //
+         $orders = Order::all();
+
+        // return response()->json(['data' => $products], 200);
+        return $this->showAll($orders);
     }
 
 

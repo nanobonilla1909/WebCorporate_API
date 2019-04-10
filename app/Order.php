@@ -20,6 +20,8 @@ class Order extends Model
 	use SoftDeletes;
 
 	protected $dates = ['deleted_at'];
+
+	protected $with = ['order_items'];
     
     protected $fillable = [
        

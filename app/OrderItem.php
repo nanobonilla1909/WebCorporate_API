@@ -20,6 +20,7 @@ class OrderItem extends Model
 		'order_id',
 		'product_id',
 		'description',
+		'image',
 		'quantity',
 		'price_list',
 		'price',
@@ -27,6 +28,7 @@ class OrderItem extends Model
 		'discount_label',
 		'discount_subtotal',
 		'is_a_gift'
+		
 
 		 ];
 

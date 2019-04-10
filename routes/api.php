@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 Route::resource('products', 'Product\ProductController', ['only' => ['index', 'show']]);
 
+Route::get('/search/{search_text}', 'Product\ProductController@getSearchResults');
 
 Route::resource('featured_products', 'Product\FeaturedProductController', ['only' => ['index', 'show']]);
 
@@ -31,7 +32,7 @@ Route::resource('home_page_category_orders', 'ProductCategory\HomePageCategoryOr
 Route::resource('highlighted_items', 'Homepage\HighlightedItemController', ['only' => ['index']]);
 
 
-Route::get('/characterized_products/{products}', 'CharacterizedProduct\CharacterizedProductController@index');
+Route::post('/characterized_products', 'CharacterizedProduct\CharacterizedProductController@get_selected_products');
 
 
 Route::get('/category_last_products_children_characterized/{id}', 'ProductCategory\ProductCategoryChildrenController@last_products_children_characterized');
@@ -57,6 +58,7 @@ Route::delete('/cart_items_empty/{cart_id}', 'TemporaryCart\CartController@empty
 
 Route::resource('users.deliveries', 'User\UserDeliveryController', ['only' => ['index']]);
 
+Route::resource('users.orders', 'User\UserOrderController', ['only' => ['index']]);
 
 
 // Companies
